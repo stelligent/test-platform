@@ -1,4 +1,11 @@
-# IN DEVELOPMENT - Not Yet Working
+# IN DEVELOPMENT - Automation not yet implemented
+To manually run:
+1. Open status-checker.py
+1. Change the string inside the first function, get_stacks_to_be_tested(), to the name or part of the name of the cfn stack(s) you want to check. It's currently ForThePeople
+1. From command line
+1. `python status-checker.py`
+This will create a file called cfn-stack-results.md
+1. Open cfn-stack-results.md to view results
 
 # Test Platform
 1. Checks the status of cfn stacks, whether they have been created successfully, failed, or are 'in progress'.
