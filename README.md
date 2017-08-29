@@ -4,7 +4,7 @@ To manually run:
 1. Change the string inside the first function, get_stacks_to_be_tested(), to the name or part of the name of the cfn stack(s) you want to check. It's currently ForThePeople
 1. From command line
 1. `python status-checker.py`
-This will create a file called cfn-stack-results.md
+1. This will create a file called cfn-stack-results.md
 1. Open cfn-stack-results.md to view results
 
 # Test Platform
