@@ -1,5 +1,5 @@
 CFN Stack Name | Status | Details
-----------------------------------
+---------- | ---------- | ---------- 
 ForThePeople-environment-timba | G | CREATE_COMPLETE
 ForThePeople-backend-mayorb | G | UPDATE_COMPLETE
 ForThePeople-backend-timba | G | UPDATE_COMPLETE
