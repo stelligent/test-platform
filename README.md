@@ -1,6 +1,13 @@
 # IN DEVELOPMENT - Automation not yet implemented
 To manually run:
+
+First install boto3
 1. `pip install boto3`
+1. IF you are on a mac and run into an error while trying to install boto3
+1. Try this command instead:
+1. `sudo pip install --ignore-installed six boto3`
+
+After boto3 is installed:
 1. Open status-checker.py
 1. Change the string inside the first function, get_stacks_to_be_tested(), to the name or part of the name of the cfn stack(s) you want to check. It's currently ForThePeople
 1. From command line, run:
