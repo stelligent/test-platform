@@ -1,5 +1,6 @@
 # IN DEVELOPMENT - Automation not yet implemented
 To manually run:
+1. `pip install boto3`
 1. Open status-checker.py
 1. Change the string inside the first function, get_stacks_to_be_tested(), to the name or part of the name of the cfn stack(s) you want to check. It's currently ForThePeople
 1. From command line, run:
