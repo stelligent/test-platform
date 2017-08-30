@@ -1,6 +1,7 @@
 # THIS ENTIRE PROGRAM DOES NOT LOOK AT OR FOR DELETED STACKS
 # You must change the string in the first function, get_stacks_to_be_tested(),
 # to a part of the name of the cfn stacks you'd like to check.
+# This will look in the AWS region that is set as default on your local computer in your AWS credentials.
 
 # IMPORTS----------------------------------------------
 import boto3
@@ -10,15 +11,15 @@ import boto3
 # DO NOT CHANGE stack_name or stack_status as they're keys.
 stack_name = 'StackName'
 stack_status = 'StackStatus'
-default_region = 'us-east-1'
 failure_states = ['CREATE_FAILED', 'ROLLBACK_COMPLETE','ROLLBACK_IN_PROGRESS','UPDATE_ROLLBACK_FAILED','UPDATE_ROLLBACK_IN_PROGRESS','ROLLBACK_FAILED']
 success_states = ['CREATE_COMPLETE','UPDATE_COMPLETE','UPDATE_COMPLETE_CLEANUP_IN_PROGRESS']
 in_progress_states = ['CREATE_IN_PROGRESS','REVIEW_IN_PROGRESS','UPDATE_IN_PROGRESS']
-table_header = 'CFN Stack Name | Status | Details' + '\n' + '----------------------------------' + '\n'
+table_header = 'CFN Stack Name | Status | Details' + '\n' + '-------------- | ------ | --------' + '\n'
 
 
 # FUNCTIONS--------------------------------------------
 # Define a substring that is included in the cfn stack names that you want to check the statuses of.
+# (Change "ForThePeople")
 def get_stacks_to_be_tested():
 	stacks_to_be_checked = []
 	all_the_names = get_all_stack_names()
@@ -116,35 +117,6 @@ def get_status_using_stack_ids(stack_id):
 		status = resource.Stack(one_id).stack_status
 		list_of_status.append(status)
 	return list_of_status
-
-
-# TESTS-------------------------------------------------
-def test_get_all_stacks_info():
-	response = get_all_stacks_info()
-	print response
-
-def test_get_all_stack_names():
-	all_the_stacks = get_all_stack_names()
-	for x in all_the_stacks:
-		print x
-
-def test_get_status_using_stack_ids(stack_id):
-	all_the_status = get_status_using_stack_ids(stack_id)
-	print all_the_status
-
-def test_check_existence_of_stacks(stacks_to_be_checked):
-	existence = check_existence_of_stacks(stacks_to_be_checked)
-	print existence
-
-def test_get_status_using_stack_names(stacks_to_be_checked):
-	status_of_stacks = get_status_using_stack_names(stacks_to_be_checked)
-	print status_of_stacks
-
-# test_get_all_stacks_info()
-# test_get_all_stack_names()
-# test_get_status_using_stack_ids(stack_id)
-# test_get_status_using_stack_names(stacks_to_be_checked)
-# test_check_existence_of_stacks(stacks_to_be_checked)
 
 
 # SCRIPT TO RUN PROGRAM-----------------------------------

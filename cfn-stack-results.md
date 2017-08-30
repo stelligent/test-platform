@@ -1,12 +1,14 @@
 CFN Stack Name | Status | Details
----------- | ---------- | ---------- 
+-------------- | ------ | --------
 ForThePeople-environment-timba | G | CREATE_COMPLETE
 ForThePeople-backend-mayorb | G | UPDATE_COMPLETE
+ForThePeople-environment-jphillips | G | CREATE_COMPLETE
 ForThePeople-backend-timba | G | UPDATE_COMPLETE
 ForThePeople-environment-evanssamuelj | G | CREATE_COMPLETE
 ForThePeople-backend-rjulian | G | UPDATE_COMPLETE
 ForThePeople-backend-evanssamuelj | G | UPDATE_COMPLETE
 ForThePeople-environment-master | G | CREATE_COMPLETE
+ForThePeople-backend-jphillips | G | UPDATE_COMPLETE
 ForThePeople-frontend-dev | G | CREATE_COMPLETE
 ForThePeople-environment-mayorb | G | CREATE_COMPLETE
 ForThePeople-backend-dev | G | CREATE_COMPLETE
