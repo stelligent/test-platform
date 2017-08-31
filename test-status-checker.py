@@ -1,9 +1,6 @@
 import unittest
 import status_checker
 
-# a = status_checker.get_all_stacks_info()
-# print a
-
 class StatusCheckerTest(unittest.TestCase):
 
 	def setUp(self):
@@ -29,16 +26,11 @@ class StatusCheckerTest(unittest.TestCase):
 		self.assertTrue(existence)
 		# print existence
 
-# 	def test_get_status_using_stack_names(stacks_to_be_checked):
-# 		status_of_stacks = get_status_using_stack_names(stacks_to_be_checked)
+	def test_get_status_using_stack_names(self):
+		status_of_stacks = status_checker.get_status_using_stack_names(status_checker.stacks_to_be_checked)
+		self.assertTrue(type(status_of_stacks) is dict)
+		self.assertIsNotNone(status_of_stacks)
 # 		print status_of_stacks
-
-# test_get_all_stacks_info()
-# test_get_all_stack_names()
-# test_get_status_using_stack_ids(stack_id)
-# test_get_status_using_stack_names(stacks_to_be_checked)
-# test_check_existence_of_stacks(stacks_to_be_checked)
-
 
 if __name__ == '__main__':
     unittest.main()
