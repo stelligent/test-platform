@@ -6,20 +6,24 @@ import status_checker
 # print a
 
 class StatusCheckerTest(unittest.TestCase):
-	def setUp():
+
+	def setUp(self):
 		pass
 
-# 	def tearDown(self):
-# 		pass
+	def tearDown(self):
+		pass
 
-	def test_get_all_stacks_info():
+	def test_get_all_stacks_info(self):
 		response = status_checker.get_all_stacks_info()
-		print response
+		self.assertIsNotNone(response)
+		# print response
 
-# 	def test_get_all_stack_names():
-# 		all_the_stacks = get_all_stack_names()
-# 		for x in all_the_stacks:
-# 			print x
+	def test_get_all_stack_names(self):
+		all_the_stacks = status_checker.get_all_stack_names()
+		self.assertIsNotNone(all_the_stacks)
+		for each_stack in all_the_stacks:
+			self.assertIn(each_stack, all_the_stacks)
+ 			# print each_stack
 
 # 	def test_get_status_using_stack_ids(stack_id):
 # 		all_the_status = get_status_using_stack_ids(stack_id)
