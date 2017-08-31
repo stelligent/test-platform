@@ -1,23 +1,6 @@
-# IN DEVELOPMENT - Automation not yet implemented
-To manually run:
-
-First install boto3
-1. `pip install boto3`
-1. IF you are on a mac and run into an error while trying to install boto3
-1. Try this command instead:
-1. `sudo pip install --ignore-installed six boto3`
-
-After boto3 is installed:
-1. Open status-checker.py
-1. Change the string inside the first function, get_stacks_to_be_tested(), to the name or part of the name of the cfn stack(s) you want to check. It's currently ForThePeople
-1. From command line, run:
-1. `python status-checker.py`
-1. This will create a file called cfn-stack-results.md
-1. Open cfn-stack-results.md to view results
-
 # Test Platform
-1. Checks the status of cfn stacks, whether they have been created successfully, failed, or are 'in progress'.
-1. Creates a Lambda function that is AUTOMATICALLY run once a day which checks the status of user-defined cfn stacks
+1. Tests all the other CloudFormation stacks in the [samples](../)
+1. Creates a Lambda function that is AUTOMATICALLY run once a day which creates all the CloudFormation stacks
 
 # !WARNING!
 When this pipeline is created (by following all of the directions below), AWS resources will be created once a day due to the automatic Lambda function. If you do not want resources to be made daily, make sure to delete all of these resources when you're finished. At the very least, go into AWS Lambda, look for the function that matches your Cloudformation stack names, and delete the Lambda function, which will stop the pipeline from running every day.
@@ -57,4 +40,19 @@ The following is typically configured one time per AWS account. The following ex
 
 
 
+# STATUS CHECKER IN DEVELOPMENT - Automation not yet implemented
+To manually run:
 
+First install boto3
+1. `pip install boto3`
+1. IF you are on a mac and run into an error while trying to install boto3
+1. Try this command instead:
+1. `sudo pip install --ignore-installed six boto3`
+
+After boto3 is installed:
+1. Open status-checker.py
+1. Change the string inside the first function, get_stacks_to_be_tested(), to the name or part of the name of the cfn stack(s) you want to check. It's currently ForThePeople
+1. From command line, run:
+1. `python status-checker.py`
+1. This will create a file called cfn-stack-results.md
+1. Open cfn-stack-results.md to view results
