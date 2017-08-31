@@ -1,7 +1,6 @@
 import unittest
 import status_checker
 
-
 # a = status_checker.get_all_stacks_info()
 # print a
 
@@ -25,13 +24,10 @@ class StatusCheckerTest(unittest.TestCase):
 			self.assertIn(each_stack, all_the_stacks)
  			# print each_stack
 
-# 	def test_get_status_using_stack_ids(stack_id):
-# 		all_the_status = get_status_using_stack_ids(stack_id)
-# 		print all_the_status
-
-# 	def test_check_existence_of_stacks(stacks_to_be_checked):
-# 		existence = check_existence_of_stacks(stacks_to_be_checked)
-# 		print existence
+	def test_check_existence_of_stacks(self):
+		existence = status_checker.check_existence_of_stacks(status_checker.stacks_to_be_checked)
+		self.assertTrue(existence)
+		# print existence
 
 # 	def test_get_status_using_stack_names(stacks_to_be_checked):
 # 		status_of_stacks = get_status_using_stack_names(stacks_to_be_checked)
