@@ -6,7 +6,6 @@
 # IMPORTS----------------------------------------------
 import boto3
 
-
 # VARIABLES--------------------------------------------
 # DO NOT CHANGE stack_name or stack_status as they're keys.
 stack_name = 'StackName'
@@ -15,7 +14,6 @@ failure_states = ['CREATE_FAILED', 'ROLLBACK_COMPLETE','ROLLBACK_IN_PROGRESS','U
 success_states = ['CREATE_COMPLETE','UPDATE_COMPLETE','UPDATE_COMPLETE_CLEANUP_IN_PROGRESS']
 in_progress_states = ['CREATE_IN_PROGRESS','REVIEW_IN_PROGRESS','UPDATE_IN_PROGRESS']
 table_header = 'CFN Stack Name | Status | Details' + '\n' + '-------------- | ------ | --------' + '\n'
-
 
 # FUNCTIONS--------------------------------------------
 # Define a substring that is included in the cfn stack names that you want to check the statuses of.
@@ -117,7 +115,6 @@ def get_status_using_stack_ids(stack_id):
 		status = resource.Stack(one_id).stack_status
 		list_of_status.append(status)
 	return list_of_status
-
 
 # SCRIPT TO RUN PROGRAM-----------------------------------
 # These four steps will get the stack names to be checked,
