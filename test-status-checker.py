@@ -30,7 +30,7 @@ class StatusCheckerTest(unittest.TestCase):
 		status_of_stacks = status_checker.get_status_using_stack_names(status_checker.stacks_to_be_checked)
 		self.assertTrue(type(status_of_stacks) is dict)
 		self.assertIsNotNone(status_of_stacks)
-# 		print status_of_stacks
+		# print status_of_stacks
 
 if __name__ == '__main__':
     unittest.main()
