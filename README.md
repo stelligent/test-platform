@@ -41,7 +41,7 @@ The following is typically configured one time per AWS account. The following ex
 
 
 # STATUS CHECKER IN DEVELOPMENT - Automation not yet implemented
-Checks the status of cfn stacks, whether they have been created successfully, failed, or are 'in progress'.
+1. Checks the status of cfn stacks, whether they have been created successfully, failed, or are 'in progress'.
 
 To manually run:
 
