@@ -1,0 +1,18 @@
+version: 0.2
+
+env:
+  variables:
+    STATIC_TEMPLATE_URL: "https://s3.amazonaws.com/www.devopsessentialsaws.com/samples/static/pipeline.yml"
+
+phases:
+  build:
+    commands:
+      - echo Status Checker Has Started
+
+      - 
+  post_build:
+    commands:
+      - echo Status Checker Build Completed
+artifacts:
+  files:
+    - '**/*'
