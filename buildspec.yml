@@ -14,7 +14,7 @@ phases:
     commands:
       - echo Status Checker Build Completed
       - echo Setting public-read permissions on artifact
-      - aws s3 cp --acl public-read s3://tleavey-test-platform-status/cfn-stack-results
+      - aws s3 cp --recursive --acl public-read s3://tleavey-test-platform-status/
 artifacts:
   files:
     - cfn-stack-results.md
