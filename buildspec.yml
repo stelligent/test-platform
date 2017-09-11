@@ -1,14 +1,19 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo Installing boto3
+      - pip install -U boto3
+      - echo Finished installing boto3
   build:
     commands:
       - echo Status Checker Has Started
       - echo Compiling the Python code...
-      - python status_checker.py 
+      - python status_checker.py
   post_build:
     commands:
       - echo Status Checker Build Completed
 artifacts:
   files:
-    - status_checker_results.py
+    - cfn-stack-results.md
