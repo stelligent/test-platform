@@ -4,11 +4,11 @@ phases:
   build:
     commands:
       - echo Status Checker Has Started
-
+      - echo Compiling the Python code...
       - python status_checker.py 
   post_build:
     commands:
       - echo Status Checker Build Completed
 artifacts:
   files:
-    - '**/*'
+    - status_checker_results.py
