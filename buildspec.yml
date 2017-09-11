@@ -3,13 +3,15 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo Updating pip
+      - pip install --upgrade pip
+      - Finished updating pip
       - echo Installing boto3
       - pip install -U boto3
       - echo Finished installing boto3
   build:
     commands:
-      - echo Status Checker Has Started
-      - echo Compiling the Python code...
+      - echo Compiling status_checker.py
       - python status_checker.py
   post_build:
     commands:
