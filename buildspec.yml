@@ -11,7 +11,6 @@ phases:
       - echo Compiling status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
-      - echo SRC DIRECTORY IS $CODEBUILD_SRC_DIR
   post_build:
     commands:
       - echo Setting public-read permissions on artifact
