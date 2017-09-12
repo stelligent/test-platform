@@ -20,4 +20,4 @@ artifacts:
   files:
     - cfn-stack-results.md
   discard-paths: yes
-  base-directory: tleavey-test-platform-status
+  base-directory: cfnResults
