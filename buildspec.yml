@@ -10,11 +10,12 @@ phases:
     commands:
       - echo Compiling status_checker.py
       - python status_checker.py
+      - echo Status Checker Build Completed
   post_build:
     commands:
-      - echo Status Checker Build Completed
       - echo Setting public-read permissions on artifact
       - aws s3 mv --acl public-read cfn-stack-results.md s3://tleavey-test-platform-status/cfnResults/
+      - echo The cfn-stack-results have been moved successfully.
 artifacts:
   files:
     - cfn-stack-results.md
