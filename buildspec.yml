@@ -18,4 +18,4 @@ phases:
       - echo The cfn-stack-results have been moved successfully.
 artifacts:
   files:
-    - cfn-stack-results.md
+    - /cfnResults/cfn-stack-results.md
