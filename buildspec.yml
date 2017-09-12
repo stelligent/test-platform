@@ -11,6 +11,7 @@ phases:
       - echo Compiling status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
+      - echo SRC DIRECTORY IS $CODEBUILD_SRC_DIR
   post_build:
     commands:
       - echo Setting public-read permissions on artifact
@@ -18,6 +19,4 @@ phases:
       - echo The cfn-stack-results have been moved successfully.
 artifacts:
   files:
-    - cfn-stack-results.md
-  discard-paths: yes
-  base-directory: cfnResults
+    - '**/*'
