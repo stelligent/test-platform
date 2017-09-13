@@ -198,6 +198,40 @@ Resources:
       Tags:
       - Key: Owner
         Value: MyCodeBuildProject
+  CodeBuildStatusChecker:
+    Type: AWS::CodeBuild::Project
+    DependsOn: CodeBuildRole
+    Properties:
+      Name: CodeBuildStatusChecker
+      Description: Build application
+      ServiceRole:
+        Fn::GetAtt:
+        - CodeBuildRole
+        - Arn
+      Artifacts:
+        Type: no_artifacts
+      Environment:
+        EnvironmentVariables:
+        - Name: S3_BUCKET
+          Value:
+            Ref: ArtifactBucket
+        Type: LINUX_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/eb-python-2.7-amazonlinux-64:2.1.6
+      Source:
+        BuildSpec: buildspec.yml
+        Location:
+          Fn::Join:
+          - ''
+          - - https://git-codecommit.
+            - Ref: AWS::Region
+            - ".amazonaws.com/v1/repos/"
+            - Ref: AWS::StackName
+        Type: CODECOMMIT
+      TimeoutInMinutes: 10
+      Tags:
+      - Key: Owner
+        Value: MyCodeBuildProject
   CodeBuildTestCfn:
     Type: AWS::CodeBuild::Project
     DependsOn: CodeBuildRole
@@ -313,6 +347,19 @@ Resources:
             ProjectName:
               Ref: CodeBuildTestCfn
           RunOrder: 1
+        - InputArtifacts:
+          - Name: MyApp
+          Name: RunStatusChecker
+          ActionTypeId:
+            Category: Test
+            Owner: AWS
+            Version: '1'
+            Provider: CodeBuild
+          OutputArtifacts: []
+          Configuration:
+            ProjectName:
+              Ref: CodeBuildStatusChecker
+          RunOrder: 2
       - Name: Deploy
         Actions:
         - InputArtifacts:
