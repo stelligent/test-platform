@@ -8,8 +8,10 @@ phases:
       - echo Finished installing boto3
   build:
     commands:
-      - echo Compiling status_checker.py
+      - echo Going to sleep for 5 minutes.
       - sleep 300
+      - echo Just woke up.
+      - echo Running status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
   post_build:
