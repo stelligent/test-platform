@@ -1,11 +1,18 @@
 version: 0.2
 
+env:
+  parameter-store:
+    DEPLOY_KEY: "Test-Platform-CB-GH-DeployKey"
+
 phases:
   install:
     commands:
       - echo Installing boto3
       - pip install -U boto3
       - echo Finished installing boto3
+      - echo Cloning Git Repo
+      - git clone ssh://git@github.com/tleavey/test-platform.git
+      - Finished Cloning
   build:
     commands:
       - echo Going to sleep for 5 minutes.
@@ -14,6 +21,8 @@ phases:
       - echo Running status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
+      - echo CDing into the directory test-platform
+      - cd test-platform
   post_build:
     commands:
       - echo Setting public-read permissions on artifact
