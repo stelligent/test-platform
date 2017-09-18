@@ -11,6 +11,7 @@ phases:
       - pip install -U boto3
       - echo Finished installing boto3
       - echo Cloning Git Repo
+      - export GIT_SSH_COMMAND="ssh -i $DEPLOY_KEY
       - git clone git@github.com:stelligent/test-platform.git
       - Finished Cloning
   build:
