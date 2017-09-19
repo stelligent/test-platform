@@ -12,6 +12,7 @@ phases:
       - echo Finished installing boto3
       - echo $DEPLOY_KEY > ~/deploy_key
       - chmod 600 ~/deploy_key
+      - echo $PATH
       - eval `ssh-agent -s`
       - ssh-add ~/deploy_key
       - git config --global user.email "timothy.leavey@gmail.com"
