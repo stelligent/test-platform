@@ -11,7 +11,7 @@ phases:
       - pip install -U boto3
       - echo Finished installing boto3
       - echo $DEPLOY_KEY > ~/deploy_key
-      - sed  '/^$/d' ~/deploy_key > id_rsa
+      - sed  '/^$/d' ~/deploy_key > ~/id_rsa
       - chmod 600 ~/id_rsa
       - apt-get update
       - apt-get upgrade -y
