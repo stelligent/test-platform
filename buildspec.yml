@@ -10,7 +10,7 @@ phases:
       - echo Installing boto3
       - pip install -U boto3
       - echo Finished installing boto3
-      - Installing ssh-agent
+      - echo Installing ssh-agent
       - npm install ssh-agent
       - echo $DEPLOY_KEY > ~/deploy_key
       - chmod 600 ~/deploy_key
