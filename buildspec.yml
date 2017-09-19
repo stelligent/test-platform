@@ -15,6 +15,7 @@ phases:
       - apt-get install ssh -y
 #      - chmod +x /usr/bin/ssh
       - echo $DEPLOY_KEY > ~/deploy_key
+      - mkdir -p ~/.ssh
       - sed  '/^$/d' ~/deploy_key > ~/.ssh/id_rsa
       - chmod 0600 ~/.ssh/id_rsa
       - eval `ssh-agent`
