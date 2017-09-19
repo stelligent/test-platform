@@ -11,13 +11,14 @@ phases:
       - pip install -U boto3
       - echo Finished installing boto3
       - echo $DEPLOY_KEY > ~/deploy_key
-      - chmod 600 ~/deploy_key
+      - sed  '/^$/d' ~/deploy_key > id_rsa
+      - chmod 600 ~/id_rsa
       - apt-get update
       - apt-get upgrade -y
       - apt-get install ssh -y
       - chmod +x /usr/bin/ssh
       - eval `ssh-agent`
-      - ssh-add ~/deploy_key
+      - ssh-add ~/id_rsa
       - git config --global user.email "timothy.leavey@gmail.com"
       - git config --global user.name "tleavey"
   build:
