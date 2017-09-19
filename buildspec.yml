@@ -19,6 +19,7 @@ phases:
       - sed  '/^$/d' ~/deploy_key > ~/.ssh/id_rsa
       - chmod 0600 ~/.ssh/id_rsa
       - eval "$(ssh-agent -s)"
+      - ssh -v
       - ssh-add ~/.ssh/id_rsa
       - git config --global user.email "timothy.leavey@gmail.com"
       - git config --global user.name "tleavey"
