@@ -15,11 +15,16 @@ phases:
   build:
     commands:
       - echo Going to sleep for 5 minutes.
-      - sleep 300
+#      - sleep 300
       - echo Just woke up.
       - echo Running status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
+      - pwd
+      - ls -la
+      - git add cfn-stack-results.md
+      - git commit -m "Updated cfn stack results."
+      - git push
   post_build:
     commands:
       - echo Setting public-read permissions on output
