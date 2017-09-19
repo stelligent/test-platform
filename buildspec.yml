@@ -19,8 +19,6 @@ phases:
       - echo Running status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
-      - echo CDing into the directory test-platform
-      - cd test-platform
   post_build:
     commands:
       - echo Setting public-read permissions on artifact
