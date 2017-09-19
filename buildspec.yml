@@ -12,6 +12,7 @@ phases:
       - echo Finished installing boto3
       - echo $DEPLOY_KEY > ~/deploy_key
       - chmod 600 ~/deploy_key
+      - apt install openssh-client
       - chmod +x /usr/bin/ssh
       - eval `ssh-agent`
       - ssh-add ~/deploy_key
