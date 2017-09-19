@@ -1,6 +1,8 @@
 version: 0.2
 
 env:
+  variables:
+    GIT_SSH_COMMAND: ssh -i ~/.ssh/id_rsa
   parameter-store:
     DEPLOY_KEY: "Test-Platform-CB-GH-DeployKey"
 
@@ -18,8 +20,8 @@ phases:
       - mkdir -p ~/.ssh
       - sed  '/^$/d' ~/deploy_key > ~/.ssh/id_rsa
       - chmod 0600 ~/.ssh/id_rsa
-      - eval "$(ssh-agent -s)"
-      - ssh-add -A ~/.ssh/id_rsa
+      # - eval "$(ssh-agent -s)"
+      # - ssh-add -A ~/.ssh/id_rsa
       - git config --global user.email "timothy.leavey@gmail.com"
       - git config --global user.name "tleavey"
   build:
