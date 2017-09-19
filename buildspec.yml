@@ -13,7 +13,7 @@ phases:
       - echo $DEPLOY_KEY > ~/deploy_key
       - chmod 600 ~/deploy_key
       - echo $PATH
-      - eval `ssh-agent -s`
+      - eval `ssh-agent`
       - ssh-add ~/deploy_key
       - git config --global user.email "timothy.leavey@gmail.com"
       - git config --global user.name "tleavey"
