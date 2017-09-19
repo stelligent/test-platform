@@ -13,7 +13,7 @@ phases:
       - echo $DEPLOY_KEY > ~/deploy_key
       - chmod 600 ~/deploy_key
       - apt-get update
-      - apt-get upgrade
+      - apt-get upgrade -y
       - apt-get install ssh -y
       - chmod +x /usr/bin/ssh
       - eval `ssh-agent`
