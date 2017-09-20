@@ -17,6 +17,7 @@ phases:
       - apt-get install ssh -y
 #      - chmod +x /usr/bin/ssh
       - echo $DEPLOY_KEY > ~/deploy_key.pem
+      - cat ~/deploy_key.pem
       - mkdir -p ~/.ssh
       # - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
       - mv ~/deploy_key.pem ~/.ssh/id_rsa.pem
