@@ -21,10 +21,10 @@ phases:
       - cat ~/deploy_key.pem
       - mkdir -p ~/.ssh
       # - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
-      - mv ~/deploy_key.pem ~/.ssh/id_rsa
+      - mv ~/deploy_key.pem ~/.ssh/id_rsa.pem
       - chmod 700 ~/.ssh
       - chmod 600 ~/.ssh/*
-      - cat ~/.ssh/id_rsa
+      - cat ~/.ssh/id_rsa.pem
       # - mv ~/deploy_key.pem /root/.ssh/id_rsa
       # - chmod 700 /root/.ssh
       # - chmod 600 /root/.ssh/*
@@ -51,7 +51,7 @@ phases:
       - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - echo Now looking at ssh info
       - git status
-      - ssh -vT git@github.com
+      # - ssh -vT git@github.com
       - git push origin master
   post_build:
     commands:
