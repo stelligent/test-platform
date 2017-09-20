@@ -30,7 +30,7 @@ phases:
       # - chmod 600 /root/.ssh/*
       # - cat /root/.ssh/id_rsa
       - eval "$(ssh-agent -s)"
-      - ssh-add -A ~/.ssh/id_rsa
+      - ssh-add ~/.ssh/id_rsa
       - git config --global user.email "timothy.leavey@gmail.com"
       - git config --global user.name "tleavey"
   build:
