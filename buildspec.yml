@@ -39,14 +39,15 @@ phases:
       - ls -la
       - git add cfn-stack-results.md
       - git commit -m "Updated cfn stack results."
-      - git remote -v
-      - git remote set-url origin git@github.com:stelligent/test-platform.git
-      - git remote -v
-      - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-      - echo Now looking at ssh info
-      - git status
-      - ssh -vT git@github.com
-      - git push origin master
+      - git push
+      # - git remote -v
+      # - git remote set-url origin git@github.com:stelligent/test-platform.git
+      # - git remote -v
+      # - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+      # - echo Now looking at ssh info
+      # - git status
+      # - ssh -vT git@github.com
+      # - git push origin master
   post_build:
     commands:
       - echo Setting public-read permissions on output
