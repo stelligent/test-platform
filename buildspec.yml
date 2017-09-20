@@ -16,12 +16,12 @@ phases:
       - apt-get upgrade -y
       - apt-get install ssh -y
 #      - chmod +x /usr/bin/ssh
-      - echo $DEPLOY_KEY > ~/deploy_key
+      - echo $DEPLOY_KEY > ~/deploy_key.pem
       - mkdir -p ~/.ssh
-      - sed  '/^$/d' ~/deploy_key > ~/.ssh/id_rsa
-      - chmod 0600 ~/.ssh/id_rsa
-      - echo ~/.ssh/id_rsa
-      - cat ~/.ssh/id_rsa
+      - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
+      - chmod 0600 ~/.ssh/id_rsa.pem
+      - echo ~/.ssh/id_rsa.pem
+      - cat ~/.ssh/id_rsa.pem
       # - eval "$(ssh-agent -s)"
       # - ssh-add -A ~/.ssh/id_rsa
       - git config --global user.email "timothy.leavey@gmail.com"
@@ -43,6 +43,9 @@ phases:
       - git remote set-url origin git@github.com:stelligent/test-platform.git
       - git remote -v
       - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+      - echo Tail starting now
+      - tail -f -n 80 /var/log/auth.log
+      - echo Now looking at ssh info
       - ssh -vT git@github.com
       - git push
   post_build:
