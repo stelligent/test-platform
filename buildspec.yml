@@ -19,6 +19,7 @@ phases:
       - echo $DEPLOY_KEY > ~/deploy_key.pem
       - mkdir -p ~/.ssh
       # - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
+      - sed ~/deploy_key.pem > ~/.ssh/id_rsa.pem
       - chmod 0600 ~/.ssh/id_rsa.pem
       - echo ~/.ssh/id_rsa.pem
       - cat ~/.ssh/id_rsa.pem
