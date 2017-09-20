@@ -20,10 +20,13 @@ phases:
       - cat ~/deploy_key.pem
       - mkdir -p ~/.ssh
       # - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
-      - mv ~/deploy_key.pem ~/.ssh/id_rsa
-      - chmod 700 ~/.ssh
-      - chmod 600 ~/.ssh/*
-      - cat ~/.ssh/id_rsa
+      # - mv ~/deploy_key.pem ~/.ssh/id_rsa
+      # - chmod 700 ~/.ssh
+      # - chmod 600 ~/.ssh/*
+      - mv ~/deploy_key.pem /root/.ssh/id_rsa
+      - chmod 700 /root/.ssh
+      - chmod 600 /root/.ssh/*
+      - cat /root/.ssh/id_rsa
       # - eval "$(ssh-agent -s)"
       # - ssh-add -A ~/.ssh/id_rsa
       - git config --global user.email "timothy.leavey@gmail.com"
