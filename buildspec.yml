@@ -20,6 +20,8 @@ phases:
       - mkdir -p ~/.ssh
       - sed  '/^$/d' ~/deploy_key > ~/.ssh/id_rsa
       - chmod 0600 ~/.ssh/id_rsa
+      - echo ~/.ssh/id_rsa
+      - cat ~/.ssh/id_rsa
       # - eval "$(ssh-agent -s)"
       # - ssh-add -A ~/.ssh/id_rsa
       - git config --global user.email "timothy.leavey@gmail.com"
@@ -37,7 +39,7 @@ phases:
       - git status
       - git add cfn-stack-results.md
       - git commit -m "Updated cfn stack results."
-      - git push
+      - git push git://github.com/stelligent/test-platform
   post_build:
     commands:
       - echo Setting public-read permissions on output
