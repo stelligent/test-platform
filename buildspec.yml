@@ -39,7 +39,10 @@ phases:
       - git status
       - git add cfn-stack-results.md
       - git commit -m "Updated cfn stack results."
-      - git push git://github.com/stelligent/test-platform
+      - git remote -v
+      - git remote set-url origin git@github.com:stelligent/test-platform.git
+      - git remote -v
+      - git push origin master
   post_build:
     commands:
       - echo Setting public-read permissions on output
