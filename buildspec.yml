@@ -21,7 +21,8 @@ phases:
       - mkdir -p ~/.ssh
       # - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
       - mv ~/deploy_key.pem ~/.ssh/id_rsa.pem
-      - chmod 0600 ~/.ssh/id_rsa.pem
+      - chmod 700 ~/.ssh
+      - chmod 600 ~/.ssh/id_rsa.pem
       - cat ~/.ssh/id_rsa.pem
       # - eval "$(ssh-agent -s)"
       # - ssh-add -A ~/.ssh/id_rsa
