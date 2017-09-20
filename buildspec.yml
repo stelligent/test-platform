@@ -4,7 +4,7 @@ env:
   variables:
     GIT_SSH_COMMAND: ssh -i ~/.ssh/id_rsa
   parameter-store:
-    DEPLOY_KEY: "CB_Test_Platform"
+    DEPLOY_KEY: "CBTestPlatformKey"
 
 phases:
   install:
