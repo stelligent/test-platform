@@ -16,7 +16,6 @@ phases:
       - apt-get upgrade -y
       - apt-get install ssh -y
       - echo $DEPLOY_KEY
-      - cat $DEPLOY_KEY
 #      - chmod +x /usr/bin/ssh
       - echo $DEPLOY_KEY > ~/deploy_key.pem
       - cat ~/deploy_key.pem
