@@ -42,6 +42,7 @@ phases:
       - git remote -v
       - git remote set-url origin git@github.com:stelligent/test-platform.git
       - git remote -v
+      - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - git push origin master
   post_build:
     commands:
