@@ -4,7 +4,7 @@ env:
   variables:
     GIT_SSH_COMMAND: ssh -i ~/.ssh/id_rsa
   parameter-store:
-    DEPLOY_KEY: "Test-Platform-CB-GH-DeployKey"
+    DEPLOY_KEY: "CB_Test_Platform"
 
 phases:
   install:
@@ -15,6 +15,8 @@ phases:
       - apt-get update
       - apt-get upgrade -y
       - apt-get install ssh -y
+      - echo $DEPLOY_KEY
+      - cat $DEPLOY_KEY
 #      - chmod +x /usr/bin/ssh
       - echo $DEPLOY_KEY > ~/deploy_key.pem
       - cat ~/deploy_key.pem
