@@ -16,7 +16,7 @@ phases:
       - apt-get upgrade -y
       - apt-get install ssh -y
       - echo $DEPLOY_KEY
-#      - chmod +x /usr/bin/ssh
+      # - chmod +x /usr/bin/ssh
       - echo $DEPLOY_KEY > ~/deploy_key.pem
       - cat ~/deploy_key.pem
       - mkdir -p ~/.ssh
@@ -35,7 +35,7 @@ phases:
   build:
     commands:
       - echo Going to sleep for 5 minutes.
-#      - sleep 300
+      # - sleep 300
       - echo Just woke up.
       - echo Running status_checker.py
       - python status_checker.py
@@ -50,7 +50,7 @@ phases:
       - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - echo Now looking at ssh info
       - git status
-      - ssh -vT git@github.com
+      # - ssh -vT git@github.com
       - git push origin master
   post_build:
     commands:
