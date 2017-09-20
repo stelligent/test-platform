@@ -18,7 +18,7 @@ phases:
 #      - chmod +x /usr/bin/ssh
       - echo $DEPLOY_KEY > ~/deploy_key.pem
       - mkdir -p ~/.ssh
-      - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
+      # - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
       - chmod 0600 ~/.ssh/id_rsa.pem
       - echo ~/.ssh/id_rsa.pem
       - cat ~/.ssh/id_rsa.pem
@@ -36,18 +36,16 @@ phases:
       - echo Status Checker Build Completed
       - pwd
       - ls -la
-      - git status
       - git add cfn-stack-results.md
       - git commit -m "Updated cfn stack results."
       - git remote -v
       - git remote set-url origin git@github.com:stelligent/test-platform.git
       - git remote -v
       - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-      - echo Tail starting now
-      - tail -f -n 80 /var/log/auth.log
       - echo Now looking at ssh info
+      - git status
       - ssh -vT git@github.com
-      - git push
+      - git push origin master
   post_build:
     commands:
       - echo Setting public-read permissions on output
