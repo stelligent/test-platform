@@ -43,7 +43,8 @@ phases:
       - git remote set-url origin git@github.com:stelligent/test-platform.git
       - git remote -v
       - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-      - git push origin master
+      - ssh -vT git@github.com
+      - git push
   post_build:
     commands:
       - echo Setting public-read permissions on output
