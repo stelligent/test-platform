@@ -31,7 +31,6 @@ phases:
       # - cat /root/.ssh/id_rsa
       # - eval "$(ssh-agent -s)"
       # - ssh-add ~/.ssh/deploy_key.pem
-      - man git-config
       - git remote -v
       - git remote set-url origin git@github.com:stelligent/test-platform.git
       - git remote -v
