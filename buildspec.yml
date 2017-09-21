@@ -36,7 +36,7 @@ phases:
       - git remote -v
       - git config --global user.email "timothy.leavey@gmail.com"
       - git config --global user.name "tleavey"
-      - ssh -o IdentitiesOnly=yes -F /dev/null -i ~/.ssh/deploy_key.pem git@github.com
+      # - ssh -o IdentitiesOnly=yes -F /dev/null -i ~/.ssh/deploy_key.pem git@github.com
 
   build:
     commands:
