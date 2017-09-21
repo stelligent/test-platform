@@ -1,41 +1,11 @@
 version: 0.2
 
-env:
-  variables:
-    GIT_SSH_COMMAND: ssh -i ~/.ssh/id_rsa
-  parameter-store:
-    DEPLOY_KEY: "CBTestPlatformKey"
-
 phases:
   install:
     commands:
       - echo Installing boto3
       - pip install -U boto3
       - echo Finished installing boto3
-      - apt-get update
-      - apt-get upgrade -y
-      - apt-get install ssh -y
-      - echo $DEPLOY_KEY
-      # - chmod +x /usr/bin/ssh
-      - echo $DEPLOY_KEY > ~/deploy_key.pem
-      - cat ~/deploy_key.pem
-      - mkdir -p ~/.ssh
-      # - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
-      - mv ~/deploy_key.pem ~/.ssh/id_rsa.pem
-      - chmod 700 ~/.ssh
-      - chmod 600 ~/.ssh/*
-      - cat ~/.ssh/id_rsa.pem
-      # - mv ~/deploy_key.pem /root/.ssh/id_rsa
-      # - chmod 700 /root/.ssh
-      # - chmod 600 /root/.ssh/*
-      # - cat /root/.ssh/id_rsa
-      # - eval "$(ssh-agent -s)"
-      # - ssh-add ~/.ssh/id_rsa
-      - git config --global user.email "timothy.leavey@gmail.com"
-      - git config --global user.name "tleavey"
-      - git remote -v
-      - git remote set-url origin git@github.com:stelligent/test-platform.git
-      - git remote -v
   build:
     commands:
       - echo Going to sleep for 5 minutes.
@@ -44,17 +14,11 @@ phases:
       - echo Running status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
-      - pwd
-      - ls -la
       - git add cfn-stack-results.md
       - git commit -m "Updated cfn stack results."
-      - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-      - echo Now looking at ssh info
       - git status
       # - ssh -vT git@github.com
       - git push origin master
   post_build:
     commands:
-      - echo Setting public-read permissions on output
-      - aws s3 mv --acl public-read cfn-stack-results.md s3://tleavey-test-platform-status/cfnResults/
-      - echo The cfn-stack-results have been moved successfully.
+      - echo All done
