@@ -1,8 +1,8 @@
 version: 0.2
 
 env:
-  # variables:
-  #   GIT_SSH_COMMAND: ssh -i ~/.ssh/id_rsa
+  variables:
+    GIT_SSH_COMMAND: ssh -i ~/.ssh/deploy_key.pem
   parameter-store:
     DEPLOY_KEY: "CBTestPlatformKey"
 
@@ -30,7 +30,7 @@ phases:
       # - chmod 600 /root/.ssh/*
       # - cat /root/.ssh/id_rsa
       - eval "$(ssh-agent -s)"
-      - ssh-add ~/.ssh/id_rsa
+      - ssh-add ~/.ssh/deploy_key.pem
       - git remote -v
       - git remote set-url origin git@github.com:stelligent/test-platform.git
       - git remote -v
