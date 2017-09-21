@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing boto3
+      - pip install -U boto3
+      - echo Finished installing boto3
+      - git config user.email "timothy.leavey@gmail.com"
+      - git config user.name "tleavey"
+  build:
+    commands:
+      - echo Going to sleep for 5 minutes.
+      # - sleep 300
+      - echo Just woke up.
+      - echo Running status_checker.py
+      - python status_checker.py
+      - echo Status Checker Build Completed
+      - git add cfn-stack-results.md
+      - git commit -m "Updated cfn stack results."
+      - git status
+      # - ssh -vT git@github.com
+      - git push
+  post_build:
+    commands:
+      - echo All done
