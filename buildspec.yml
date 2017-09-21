@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    GIT_SSH_COMMAND: ssh -i ~/.ssh/deploy_key.pem
+    GIT_SSH_COMMAND: ssh -i ~/.ssh/id_rsa
   parameter-store:
     DEPLOY_KEY: "CBTestPlatformKey"
 
@@ -15,16 +15,16 @@ phases:
       - apt-get update
       - apt-get upgrade -y
       - apt-get install ssh -y
-      - echo $DEPLOY_KEY
+      # - echo $DEPLOY_KEY
       # - chmod +x /usr/bin/ssh
-      - echo $DEPLOY_KEY > ~/deploy_key.pem
-      - cat ~/deploy_key.pem
       - mkdir -p ~/.ssh
+      - echo $DEPLOY_KEY > ~/.ssh/id_rsa
+      - cat ~/.ssh/id_rsa
+      - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       # - sed  '/^$/d' ~/deploy_key.pem > ~/.ssh/id_rsa.pem
-      - mv ~/deploy_key.pem ~/.ssh/deploy_key.pem
       - chmod 700 ~/.ssh
-      - chmod 600 ~/.ssh/*
-      - cat ~/.ssh/deploy_key.pem
+      - chmod 600 ~/.ssh/id_rsa
+      - cat ~/.ssh/id_rsa
       # - mv ~/deploy_key.pem /root/.ssh/id_rsa
       # - chmod 700 /root/.ssh
       # - chmod 600 /root/.ssh/*
@@ -36,7 +36,7 @@ phases:
       - git remote -v
       - git config --global user.email "timothy.leavey@gmail.com"
       - git config --global user.name "tleavey"
-      # - ssh -o IdentitiesOnly=yes -F /dev/null -i ~/.ssh/deploy_key.pem git@github.com
+      - ssh -o IdentitiesOnly=yes -F /dev/null
 
   build:
     commands:
@@ -46,11 +46,10 @@ phases:
       - echo Running status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
-      - pwd
-      - ls -la
+      # - pwd
+      # - ls -la
       - git add cfn-stack-results.md
       - git commit -m "Updated cfn stack results."
-      - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - echo Now looking at ssh info
       - git status
       # - ssh -vT git@github.com
