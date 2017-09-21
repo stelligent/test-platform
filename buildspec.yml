@@ -6,8 +6,8 @@ phases:
       - echo Installing boto3
       - pip install -U boto3
       - echo Finished installing boto3
-      - git config --global user.email "timothy.leavey@gmail.com"
-      - git config --global user.name "tleavey"
+      - git config user.email "timothy.leavey@gmail.com"
+      - git config user.name "tleavey"
   build:
     commands:
       - echo Going to sleep for 5 minutes.
