@@ -34,6 +34,8 @@ phases:
       - git remote -v
       - git remote set-url origin git@github.com:stelligent/test-platform.git
       - git remote -v
+      - git config --global user.email "timothy.leavey@gmail.com"
+      - git config --global user.name "tleavey"
   build:
     commands:
       - echo Going to sleep for 5 minutes.
