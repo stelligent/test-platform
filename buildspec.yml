@@ -32,15 +32,17 @@ phases:
       # - eval "$(ssh-agent -s)"
       # - ssh-add ~/.ssh/deploy_key.pem
       - git remote -v
-      - git remote set-url origin git@github.com:stelligent/test-platform.git
+      - git remote set-url origin git@github.com:stelligent/test-platform
       - git remote -v
       - git config --global user.email "timothy.leavey@gmail.com"
       - git config --global user.name "tleavey"
+      - ssh -o IdentitiesOnly=yes -F /dev/null -i ~/.ssh/deploy_key.pem git@github.com
+
   build:
     commands:
-      - echo Going to sleep for 5 minutes.
+      # - echo Going to sleep for 5 minutes.
       # - sleep 300
-      - echo Just woke up.
+      # - echo Just woke up.
       - echo Running status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
