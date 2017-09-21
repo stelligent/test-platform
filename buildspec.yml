@@ -20,7 +20,7 @@ phases:
       - git commit -m "Updated cfn stack results."
       - git status
       # - ssh -vT git@github.com
-      - git push origin master
+      - git push
   post_build:
     commands:
       - echo All done
