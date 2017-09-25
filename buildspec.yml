@@ -1,10 +1,8 @@
 version: 0.2
 
-env:
-  variables:
-    GIT_SSH_COMMAND: ssh -i ~/.ssh/id_rsa
-  parameter-store:
-    DEPLOY_KEY: "CBTestPlatformKey"
+# env:
+#   variables:
+#     MY_S3_BUCKET: 
 
 phases:
   install:
@@ -12,20 +10,6 @@ phases:
       - echo Installing boto3
       - pip install -U boto3
       - echo Finished installing boto3
-      - git config user.email "timothy.leavey@gmail.com"
-      - git config user.name "tleavey"
-      - git remote -v
-      # - git remote remove origin
-      - git remote set-url origin git@github.com:stelligent/test-platform
-      - git remote -v
-      - apt-get install ssh -y
-      - ssh -T git@github.com
-      - mkdir -p ~/.ssh
-      - cd ~/.ssh
-      - echo $DEPLOY_KEY > ~/.ssh/id_rsa
-      - chmod 700 ~/.ssh
-      - chmod 600 ~/.ssh/id_rsa
-      - ssh -T git@github.com
   build:
     commands:
       - echo Going to sleep for 5 minutes.
@@ -34,11 +18,8 @@ phases:
       - echo Running status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
-      - git add cfn-stack-results.md
-      - git commit -m "Updated cfn stack results."
-      - git status
-      # - ssh -vT git@github.com
-      - git push
   post_build:
     commands:
-      - echo All done
+      - echo Setting public-read permissions on output
+      - aws s3 mv --acl public-read cfn-stack-results.md s3://tleavey-test-platform-status/cfnResults/
+      - echo The cfn-stack-results have been moved successfully.
