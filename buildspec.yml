@@ -18,6 +18,7 @@ phases:
       # - git remote remove origin
       - git remote set-url origin git@github.com:stelligent/test-platform
       - git remote -v
+      - apt-get install ssh -y
       - ssh -T git@github.com
       - mkdir -p ~/.ssh
       - cd ~/.ssh
