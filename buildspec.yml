@@ -14,11 +14,11 @@ phases:
       - echo Finished installing boto3
       - apt-get update
       - apt-get upgrade -y
-      - apt-get install openssh-client -y
-      # - apt-get install ssh -y
+      # - apt-get install openssh-client -y
+      - apt-get install ssh -y
       # - echo $DEPLOY_KEY
-      # - chmod +x /usr/bin/ssh
-      # - mkdir -p ~/.ssh
+      - chmod +x /usr/bin/ssh
+      - mkdir -p ~/.ssh
       - cd ~/.ssh
       - ls
       - echo $DEPLOY_KEY > ~/.ssh/id_rsa
