@@ -1,8 +1,8 @@
 version: 0.2
 
-# env:
-#   variables:
-#     MY_S3_BUCKET: 
+env:
+  variables:
+    MY_S3_BUCKET: s3://tleavey-test-platform-status/cfnResults/
 
 phases:
   install:
@@ -21,5 +21,5 @@ phases:
   post_build:
     commands:
       - echo Setting public-read permissions on output
-      - aws s3 mv --acl public-read cfn-stack-results.md s3://tleavey-test-platform-status/cfnResults/
+      - aws s3 mv --acl public-read cfn-stack-results.md $MY_S3_BUCKET
       - echo The cfn-stack-results have been moved successfully.
