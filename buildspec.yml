@@ -15,8 +15,15 @@ phases:
       - git config user.email "timothy.leavey@gmail.com"
       - git config user.name "tleavey"
       - git remote -v
+      - git remote remove origin
       - git remote set-url origin git@github.com:stelligent/test-platform
       - git remote -v
+      - ssh -T git@github.com
+      - mkdir -p ~/.ssh
+      - cd ~/.ssh
+      - echo $DEPLOY_KEY > ~/.ssh/id_rsa
+      - chmod 700 ~/.ssh
+      - chmod 600 ~/.ssh/id_rsa
   build:
     commands:
       - echo Going to sleep for 5 minutes.
