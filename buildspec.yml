@@ -1,5 +1,11 @@
 version: 0.2
 
+env:
+  variables:
+    GIT_SSH_COMMAND: ssh -i ~/.ssh/id_rsa
+  parameter-store:
+    DEPLOY_KEY: "CBTestPlatformKey"
+
 phases:
   install:
     commands:
@@ -8,6 +14,9 @@ phases:
       - echo Finished installing boto3
       - git config user.email "timothy.leavey@gmail.com"
       - git config user.name "tleavey"
+      - git remote -v
+      - git remote set-url origin git@github.com:stelligent/test-platform
+      - git remote -v
   build:
     commands:
       - echo Going to sleep for 5 minutes.
