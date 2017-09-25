@@ -17,7 +17,7 @@ phases:
       # - apt-get install openssh-client -y
       - apt-get install ssh -y
       # - echo $DEPLOY_KEY
-      - chmod +x /usr/bin/ssh
+      # - chmod +x /usr/bin/ssh
       - mkdir -p ~/.ssh
       - cd ~/.ssh
       - ls
@@ -34,7 +34,7 @@ phases:
       # - cat /root/.ssh/id_rsa
       # - eval "$(ssh-agent -s)"
       # - ssh-add ~/.ssh/deploy_key.pem
-      - cd ~/
+      # - cd ~/
       - git status
       - git remote -v
       - git remote set-url origin git@github.com:stelligent/test-platform
