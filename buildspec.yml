@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     # Change 'tleavey-test-platform-status' to a folder name in your s3
-    MY_S3_BUCKET: s3://tleavey-test-platform-status/cfnResults/
+    MY_S3_BUCKET: s3://tleavey-test-platform-status/
 
 phases:
   install:
@@ -23,5 +23,4 @@ phases:
     commands:
       - echo Setting public-read permissions on output
       - aws s3 mv --acl public-read statusResults.md $MY_S3_BUCKET
-      - aws s3 mv --acl public-read $MY_S3_BUCKETstatusResults.md s3://tleavey-test-platform-status/
-      - echo The cfn-stack-results have been moved successfully.
+      - echo The results have been moved successfully.
