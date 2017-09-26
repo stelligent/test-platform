@@ -22,5 +22,5 @@ phases:
   post_build:
     commands:
       - echo Setting public-read permissions on output
-      - aws s3 mv --acl public-read statusResults.html $MY_S3_BUCKET
+      - aws s3 mv --acl public-read statusResults.md $MY_S3_BUCKET
       - echo The results have been moved successfully.

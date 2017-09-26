@@ -95,7 +95,7 @@ def manipulate_results_data_for_humans(raw_results):
 
 # Creates or replaces a file and writes results (recommended to use human readable results) to it. 
 def write_results_to_file(results_from_cfn_stacks):
-	with open("statusResults.html","a+") as file:
+	with open("statusResults.md","a+") as file:
 		file.truncate(0)
 		file.write(table_header)
 		file.write(results_from_cfn_stacks)
