@@ -12,8 +12,8 @@ phases:
       - pip install -U boto3
       - echo Finished installing boto3
       - sudo apt-get update
-      - sudo apt-get install nodejs
-      - sudo apt-get install npm
+      - sudo apt-get install nodejs -y
+      - sudo apt-get install npm -y
       - sudo npm install -g markdown-styles
   build:
     commands:
