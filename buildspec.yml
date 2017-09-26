@@ -23,5 +23,5 @@ phases:
     commands:
       - echo Setting public-read permissions on output
       - aws s3 mv --acl public-read statusResults.md $MY_S3_BUCKET
-      - aws s3 mv --acl public-read $MY_S3_BUCKET/statusResults.md s3://tleavey-test-platform-status/
+      - aws s3 mv --acl public-read $MY_S3_BUCKETstatusResults.md s3://tleavey-test-platform-status/
       - echo The cfn-stack-results have been moved successfully.
