@@ -22,7 +22,10 @@ phases:
       - echo Just woke up.
       - echo Running status_checker.py
       - python status_checker.py
+      - ls -al
+      - pwd
       - echo Status Checker Build Completed
+      - ln -s /usr/bin/nodejs /usr/bin/node
       - mkdir input/
       - mkdir output/
       - mv statusResults.md input/index.md
