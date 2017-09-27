@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     # Change 'tleavey-test-platform-status' to a folder name in your s3
-    MY_S3_BUCKET: s3://test-platform-results/
+    MY_S3_BUCKET: s3://test-platform-results-tleavey/
 
 phases:
   install:
