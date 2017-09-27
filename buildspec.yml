@@ -23,7 +23,6 @@ phases:
       - echo Running status_checker.py
       - python status_checker.py
       - echo Status Checker Build Completed
-      - generate-md --layout github --input statusResults.md --output index.html
       - mkdir input/
       - mv statusResults.md input/index.md
       - generate-md --layout github --input ./input --output ./output
