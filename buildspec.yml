@@ -30,9 +30,8 @@ phases:
       - mkdir output/
       - mv statusResults.md input/index.md
       - generate-md --layout github --input ./input --output ./output
-      - mv output/index.html ~/index.html
   post_build:
     commands:
       - echo Setting public-read permissions on output
-      - aws s3 mv --acl public-read index.html $MY_S3_BUCKET
+      - aws s3 mv --acl public-read output/index.html $MY_S3_BUCKET
       - echo The results have been moved successfully.
