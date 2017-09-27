@@ -24,8 +24,12 @@ phases:
       - python status_checker.py
       - echo Status Checker Build Completed
       - generate-md --layout github --input statusResults.md --output index.html
+      - mkdir input/
+      - mv statusResults.md input/index.md
+      - generate-md --layout github --input ./input --output ./output
+      - google-chrome ./output/index.html
   post_build:
     commands:
       - echo Setting public-read permissions on output
-      - aws s3 mv --acl public-read index.html $MY_S3_BUCKET
+      - aws s3 mv --acl public-read ./output/index.htmll $MY_S3_BUCKET
       - echo The results have been moved successfully.
