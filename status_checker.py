@@ -13,7 +13,7 @@ stack_status = 'StackStatus'
 failure_states = ['CREATE_FAILED', 'ROLLBACK_COMPLETE','ROLLBACK_IN_PROGRESS','UPDATE_ROLLBACK_FAILED','UPDATE_ROLLBACK_IN_PROGRESS','ROLLBACK_FAILED']
 success_states = ['CREATE_COMPLETE','UPDATE_COMPLETE','UPDATE_COMPLETE_CLEANUP_IN_PROGRESS']
 in_progress_states = ['CREATE_IN_PROGRESS','REVIEW_IN_PROGRESS','UPDATE_IN_PROGRESS']
-table_header = 'CFN Stack Name | Status | Details' + '\n' + '-------------- | ------ | --------' + '\n'
+table_header = '<table style="width:100%"><tr><th>CFN Stack Name</th><th>Status</th><th>Details</th></tr>'
 
 # FUNCTIONS--------------------------------------------
 # Define a substring that is included in the cfn stack names that you want to check the statuses of.
@@ -90,12 +90,12 @@ def manipulate_results_data_for_humans(raw_results):
 		else:
 			color = 'R'
 		# print i, color, results[i]
-		human_friendly_results += i+" | "+color+" | "+raw_results[i] +'\n'
+		human_friendly_results += '<tr><td>'+i+'</td><td>'+color+'</td><td>'+raw_results[i] +'</td></tr>'
 	return human_friendly_results
 
 # Creates or replaces a file and writes results (recommended to use human readable results) to it. 
 def write_results_to_file(results_from_cfn_stacks):
-	with open("statusResults.md","a+") as file:
+	with open("index.html","a+") as file:
 		file.truncate(0)
 		file.write(table_header)
 		file.write(results_from_cfn_stacks)

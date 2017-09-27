@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     # Change 'tleavey-test-platform-status' to a folder name in your s3
-    MY_S3_BUCKET: s3://test-platform-results-tleavey/
+    MY_S3_BUCKET: s3://test-platform-internal-projects/
 
 phases:
   install:
@@ -11,10 +11,6 @@ phases:
       - echo Installing boto3
       - pip install -U boto3
       - echo Finished installing boto3
-      - sudo apt-get update
-      - sudo apt-get install nodejs -y
-      - sudo apt-get install npm -y
-      - sudo npm install -g markdown-styles
   build:
     commands:
       - echo Going to sleep for 5 minutes.
@@ -24,16 +20,8 @@ phases:
       - python status_checker.py
       - cat statusResults.md
       - echo Status Checker Build Completed
-      - ln -s /usr/bin/nodejs /usr/bin/node
-      - mkdir input/
-      - mkdir output/
-      - mv statusResults.md input/index.md
-      - generate-md --layout github --input ./input --output ./output
-      - ls -al
-      - pwd
-      - cat output/index.html
   post_build:
     commands:
       - echo Setting public-read permissions on output
-      - aws s3 mv --acl public-read output/index.html $MY_S3_BUCKET
+      - aws s3 mv --acl public-read index.html $MY_S3_BUCKET
       - echo The results have been moved successfully.
