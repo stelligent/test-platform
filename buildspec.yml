@@ -30,6 +30,8 @@ phases:
       - mkdir output/
       - mv statusResults.md input/index.md
       - generate-md --layout github --input ./input --output ./output
+      - ls -al
+      - pwd
   post_build:
     commands:
       - echo Setting public-read permissions on output
