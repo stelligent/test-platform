@@ -22,8 +22,7 @@ phases:
       - echo Just woke up.
       - echo Running status_checker.py
       - python status_checker.py
-      - ls -al
-      - pwd
+      - cat statusResults.md
       - echo Status Checker Build Completed
       - ln -s /usr/bin/nodejs /usr/bin/node
       - mkdir input/
@@ -32,6 +31,7 @@ phases:
       - generate-md --layout github --input ./input --output ./output
       - ls -al
       - pwd
+      - cat output/index.html
   post_build:
     commands:
       - echo Setting public-read permissions on output
