@@ -228,7 +228,7 @@ Resources:
             - ".amazonaws.com/v1/repos/"
             - Ref: AWS::StackName
         Type: CODECOMMIT
-      TimeoutInMinutes: 10
+      TimeoutInMinutes: 60
       Tags:
       - Key: Owner
         Value: MyCodeBuildProject
