@@ -22,7 +22,7 @@ def get_stacks_to_be_tested():
 	stacks_to_be_checked = []
 	all_the_names = get_all_stack_names()
 	for key in all_the_names:
-		if "ForThePeople" in key:
+		if "test-platform-" in key:
 			stacks_to_be_checked.append(key)
 	return stacks_to_be_checked
 

@@ -37,7 +37,7 @@ class StatusCheckerTest(unittest.TestCase):
 		raw_results = status_checker.get_status_using_stack_names(stacks_to_be_checked)
 		human_friendly_results = status_checker.manipulate_results_data_for_humans(raw_results)
 		self.assertTrue(type(human_friendly_results) is str)
-		self.assertFalse(human_friendly_results == "")
+		self.assertFalse(human_friendly_results == "") # this fails if no cfn stacks exist
 
 if __name__ == '__main__':
     unittest.main()

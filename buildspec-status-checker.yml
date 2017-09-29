@@ -13,9 +13,9 @@ phases:
       - echo Finished installing boto3
   build:
     commands:
-      - echo Going to sleep for 10 minutes so all the other stacks can finish being created.
-      # - sleep 600
-      - sleep 10
+      - echo Going to sleep for 15 minutes so all the other stacks can finish being created.
+      - sleep 900
+      # - sleep 10
       - echo Just woke up.
       - echo Running status_checker.py
       - python status_checker.py
