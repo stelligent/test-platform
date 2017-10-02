@@ -5,6 +5,8 @@
 
 # IMPORTS----------------------------------------------
 import boto3
+import time
+import datetime
 
 # VARIABLES--------------------------------------------
 # DO NOT CHANGE stack_name or stack_status as they're keys.
@@ -14,6 +16,8 @@ failure_states = ['CREATE_FAILED', 'ROLLBACK_COMPLETE','ROLLBACK_IN_PROGRESS','U
 success_states = ['CREATE_COMPLETE','UPDATE_COMPLETE','UPDATE_COMPLETE_CLEANUP_IN_PROGRESS']
 in_progress_states = ['CREATE_IN_PROGRESS','REVIEW_IN_PROGRESS','UPDATE_IN_PROGRESS']
 table_header = '<table style="width:100%"><tr><th>CFN Stack Name</th><th>Status</th><th>Details</th></tr>'
+epoch_time = time.time()
+timestamp = datetime.datetime.fromtimestamp(epoch_time).strftime('%Y-%m-%d %H:%M:%S')
 
 # FUNCTIONS--------------------------------------------
 # Define a substring that is included in the cfn stack names that you want to check the statuses of.
@@ -97,6 +101,7 @@ def manipulate_results_data_for_humans(raw_results):
 def write_results_to_file(results_from_cfn_stacks):
 	with open("index.html","a+") as file:
 		file.truncate(0)
+		file.write(timestamp)
 		file.write(table_header)
 		file.write(results_from_cfn_stacks)
 		file.close()
