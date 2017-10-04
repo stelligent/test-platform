@@ -1,5 +1,5 @@
 # Results
-[RESULTS](http://test-platform-internal-projects.s3-website-us-east-1.amazonaws.com/)
+[STATUS LIST OF INTERNAL PROJECTS](http://test-platform-internal-projects.s3-website-us-east-1.amazonaws.com/)
 
 # Test Platform
 1. Tests all the other CloudFormation stacks in the [samples](../)
