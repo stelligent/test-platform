@@ -1,3 +1,6 @@
+# Results
+[RESULTS](http://test-platform-internal-projects.s3-website-us-east-1.amazonaws.com/)
+
 # Test Platform
 1. Tests all the other CloudFormation stacks in the [samples](../)
 1. Creates a Lambda function that is AUTOMATICALLY run once a day which creates all the CloudFormation stacks
