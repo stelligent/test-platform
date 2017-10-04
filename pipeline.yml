@@ -322,7 +322,7 @@ Resources:
         Actions:
         - InputArtifacts:
           - Name: MyApp
-          Name: PackageExport
+          Name: BuildScheduledLambda
           ActionTypeId:
             Category: Build
             Owner: AWS
