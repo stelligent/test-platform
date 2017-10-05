@@ -88,11 +88,11 @@ def manipulate_results_data_for_humans(raw_results):
 	human_friendly_results = ""
 	for i in raw_results:
 		if raw_results[i] in success_states:
-			color = 'G'
+			color = 'SUCCESS'
 		elif raw_results[i] in in_progress_states:
-			color = 'Y'
+			color = 'IN PROGRESS'
 		else:
-			color = 'R'
+			color = 'FAILED'
 		# print i, color, results[i]
 		human_friendly_results += '<tr><td>'+i+'</td><td>'+color+'</td><td>'+raw_results[i] +'</td></tr>'
 	return human_friendly_results
