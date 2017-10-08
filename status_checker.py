@@ -124,7 +124,7 @@ def get_status_using_stack_ids(stack_id):
 # SCRIPT TO RUN PROGRAM-----------------------------------
 # These four steps will get the stack names to be checked,
 # Check the status of those specific cfn stacks,
-# And output the results into a file named statusResults.md
+# And output the results into a file named index.html
 stacks_to_be_checked = get_stacks_to_be_tested()
 raw_results = get_status_using_stack_names(stacks_to_be_checked)
 human_friendly_results = manipulate_results_data_for_humans(raw_results)
