@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing boto3
+      - pip install -U boto3
+      - echo Finished installing boto3
+  build:
+    commands:
+      - echo Running delete_stacks.py
+      - python delete_stacks.py
+  post_build:
+    commands:
+      - echo Finished deleting stacks
