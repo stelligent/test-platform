@@ -25,12 +25,8 @@ The following is typically configured one time per AWS account. The following ex
 1. From Outputs, click on the **PipelineUrl** output. The Source action will be in a failed state.
 1. From the CodePipeline Source action, click on the CodeCommit provider and copy the **git clone** statement provided by CodeCommit
 1. Paste the command in your Terminal
-1. From this [samples/test-platform](../test-platform) folder, copy the **[buildspec-cfnstacks.yml](./buildspec-cfnstacks.yml)** file to your locally cloned CodeCommit git repo
-1. From this [samples/test-platform](../test-platform) folder, copy the **[buildspec-lambda.yml](./buildspec-lambda.yml)** file to your locally cloned CodeCommit git repo
-1. From this [samples/test-platform](../test-platform) folder, copy the **[sam-template.yml](./sam-template.yml)** file to your locally cloned CodeCommit git repo
-1. From this [samples/test-platform](../test-platform) folder, copy the **[index.js](./index.js)** file to your locally cloned CodeCommit git repo
-1. Open your local **[index.js](./index.js)** file and change the variable CHANGE_TO_CODEPIPELINE_NAME to match the name of your CodePipeline pipeline. (The name can be found by going to AWS CodePipeline in the AWS Console.)
-1. From your Terminal, type `git add .`
+1. From this [samples/test-platform](../test-platform) folder, copy all the files to your locally cloned CodeCommit git repo
+1. In your locally cloned CodeCommmit git repo, from your Terminal, type `git add .`
 1. From your Terminal, type `git commit -am "add new files"`
 1. From your Terminal, type `git push`
 1. Go back to your pipeline in CodePipeline and see the changes flow through the pipeline
@@ -41,12 +37,13 @@ The following is typically configured one time per AWS account. The following ex
 1. The CloudFormation template is available [here](https://s3.amazonaws.com/www.devopsessentialsaws.com/samples/test-platform/pipeline.yml).
 
 
-
-
-# STATUS CHECKER IN DEVELOPMENT - Automation not yet implemented
+# STATUS CHECKER
 1. Checks the status of cfn stacks, whether they have been created successfully, failed, or are 'in progress'.
 
-To manually run:
+You can view the results [here](http://test-platform-internal-projects.s3-website-us-east-1.amazonaws.com/)
+The s3 bucket the results are put into is a variable in buildspec-status-checker.yml.
+
+To manually run just the status checker locally:
 
 First install boto3
 1. `pip install boto3`
@@ -56,8 +53,8 @@ First install boto3
 
 After boto3 is installed:
 1. Open status_checker.py
-1. Change the string inside the first function, get_stacks_to_be_tested(), to the name or part of the name of the cfn stack(s) you want to check. It's currently ForThePeople
+1. Change the string inside the first function, get_stacks_to_be_tested(), to the name or part of the name of the cfn stack(s) you want to check. It's currently "test-platform-"
 1. From command line, run:
 1. `python status-checker.py`
-1. This will create a file called cfn-stack-results.md
-1. Open cfn-stack-results.md to view results
+1. This will create a file called index.html
+1. Open index.html to view results
