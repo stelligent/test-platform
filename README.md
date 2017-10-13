@@ -2,11 +2,14 @@
 [STATUS LIST OF INTERNAL PROJECTS](http://test-platform-internal-projects.s3-website-us-east-1.amazonaws.com/)
 
 # Test Platform
-1. Tests all the other CloudFormation stacks in the [samples](../)
-1. Creates a Lambda function that is AUTOMATICALLY run once a day which creates all the CloudFormation stacks
+1. Runs and tests internal projects' cloudformation templates to see if those projects are working and up-to-date.
+1. Outputs results [here](http://test-platform-internal-projects.s3-website-us-east-1.amazonaws.com/)
+1. Once the Test Platform pipeline is launched, it will run once a day from then on. 
+1. Test Platform creates a Lambda function that is AUTOMATICALLY run once a day which creates all the CloudFormation stacks.
+1. The cfn stacks (internal projects' cfn stacks) that get automatically created are also automatically deleted.
 
 # !WARNING!
-When this pipeline is created (by following all of the directions below), AWS resources will be created once a day due to the automatic Lambda function. If you do not want resources to be made daily, make sure to delete all of these resources when you're finished. At the very least, go into AWS Lambda, look for the function that matches your Cloudformation stack names, and delete the Lambda function, which will stop the pipeline from running every day.
+When this pipeline is created (by following all of the directions below), AWS resources will be created once a day due to the automatic Lambda function. Those resources will automatically be deleted right after creation.
 
 # Setup
 
