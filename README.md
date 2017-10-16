@@ -20,7 +20,7 @@ The following is typically configured one time per AWS account. The following ex
 
 # Launch Stack
 
-[![Launch CFN stack](https://s3.amazonaws.com/www.devopsessentialsaws.com/img/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7Edevops-essentials-test-platform%7Cturl%7Ehttps://s3.amazonaws.com/www.devopsessentialsaws.com/samples/test-platform/pipeline.yml)
+[![Launch CFN stack](https://s3.amazonaws.com/www.devopsessentialsaws.com/img/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7Estelligent-test-platform%7Cturl%7Ehttps://s3.amazonaws.com/stelligent-public/cloudformation-templates/github/test-platform/pipeline.yml)
 
 # Configure Solution
 
