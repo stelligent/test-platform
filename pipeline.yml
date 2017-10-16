@@ -12,6 +12,13 @@ Parameters:
     AllowedPattern: "[\\x20-\\x7E]*"
     ConstraintDescription: Can contain only ASCII characters.
 Resources:
+  Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "CodePipelineStack"
+      Type: "String"
+      Value:
+        Ref: CodePipelineStack
+      Description: "Name of the CodePipeline generated in this CloudFormation template."
   CloudFormationTrustRole:
     DependsOn:
     - ArtifactBucket
