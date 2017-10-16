@@ -12,7 +12,8 @@ Parameters:
     AllowedPattern: "[\\x20-\\x7E]*"
     ConstraintDescription: Can contain only ASCII characters.
 Resources:
-  Type: "AWS::SSM::Parameter"
+  CodePipelineParameter:
+    Type: "AWS::SSM::Parameter"
     Properties:
       Name: "CodePipelineStack"
       Type: "String"
