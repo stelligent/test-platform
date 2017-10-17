@@ -121,11 +121,56 @@ def get_status_using_stack_ids(stack_id):
 		list_of_status.append(status)
 	return list_of_status
 
+# This funtion returns the subscribed user's email address.
+# This function is not currently being used.
+def get_subscribed_email():
+	arn = get_arn_from_parameter_store()
+	client = boto3.client('sns')
+	response = client.list_subscriptions_by_topic(
+    	TopicArn=arn
+	)
+	for key in response['Subscriptions']:
+		if "Endpoint" in key:
+				email = key["Endpoint"]
+	return email
+
+def get_arn_from_parameter_store():
+	client = boto3.client('ssm')
+	arn = ""
+	response = client.get_parameters(
+    Names=[
+        'MySNSTopicArn'
+    ]
+	)
+	for key in response['Parameters']:
+		if "Value" in key:
+				arn = key["Value"]
+	return arn
+
+def send_out_notification(messageToSend):
+	arn = get_arn_from_parameter_store()
+	# email = get_subscribed_email()
+	client = boto3.client('sns')
+	response = client.publish(
+	    TopicArn=arn,
+	    Message=messageToSend,
+	    MessageStructure='string'
+	)
+	return
+
+def send_failed_notifications(raw_results):
+	for one_stack, this_status in raw_results.items():
+		if this_status in failure_states:
+			failureMessage = one_stack + " FAILED to create"
+			send_out_notification(failureMessage)
+	return
+
 # SCRIPT TO RUN PROGRAM-----------------------------------
 # These four steps will get the stack names to be checked,
 # Check the status of those specific cfn stacks,
 # And output the results into a file named index.html
 stacks_to_be_checked = get_stacks_to_be_tested()
 raw_results = get_status_using_stack_names(stacks_to_be_checked)
+notify_failures = send_failed_notifications(raw_results)
 human_friendly_results = manipulate_results_data_for_humans(raw_results)
 write_results_to_file(human_friendly_results)
