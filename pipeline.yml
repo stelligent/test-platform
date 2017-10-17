@@ -12,7 +12,7 @@ Parameters:
     AllowedPattern: "[\\x20-\\x7E]*"
     ConstraintDescription: Can contain only ASCII characters.
 Resources:
-  BasicParameter:
+  SNSArnParameter:
     Type: "AWS::SSM::Parameter"
     Properties:
       Name: "MySNSTopicArn"
@@ -20,7 +20,7 @@ Resources:
       Value:
         Ref: MySNSTopic
       Description: "Arn of the MySNSTopic generated in this CloudFormation template."
-  BasicParameter:
+  CodePipelineParameter:
     Type: "AWS::SSM::Parameter"
     Properties:
       Name: "CodePipelineStack"
