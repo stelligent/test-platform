@@ -19,7 +19,7 @@ Resources:
       Type: "String"
       Value:
         Ref: MySNSTopic
-      Description: "Name of the MySNSTopic generated in this CloudFormation template."
+      Description: "Arn of the MySNSTopic generated in this CloudFormation template."
   BasicParameter:
     Type: "AWS::SSM::Parameter"
     Properties:
