@@ -32,7 +32,7 @@ env:
     CFNSTACK_NAME_PREFIX: "CfnStacknamePrefixParameter"
     DROM_BASE_TEMPLATE_URL: "DromBaseTemplateUrlParameter"
     DROM_DDB_TABLE_NAME: "DromDdbTableNameParameter"
-    MY_HOSTED_ZONE: "MyHostedZoneParameter
+    MY_HOSTED_ZONE: "MyHostedZoneParameter"
 
 
 phases:
