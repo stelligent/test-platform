@@ -5,7 +5,6 @@ phases:
     commands:
       - npm install
       - aws cloudformation package --template sam-template.yml --s3-bucket $S3_BUCKET --output-template template-export.json
-      - aws s3 cp --recursive --acl public-read ./ s3://cloudformation-templates-stelligent/test-platform
 
 artifacts:
   type: zip
