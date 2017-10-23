@@ -5,6 +5,36 @@ Parameters:
   EmailAddress:
     Description: Email Address for sending SNS notifications for CodeCommit
     Type: String
+  S3BucketBeanstalk:
+    Description: Unique S3 Bucket Name for Elastic Beanstalk
+    Type: String
+  GitHubUser:
+    Description: GitHubUser id
+    Type: String
+    Default: stelligent
+  CfnStacknamePrefix:
+    Description: CfnStacknamePrefix
+    Type: String
+    Default: test-platform-
+  DromDdbTableName:
+    Description: DromDdbTableName
+    Type: String
+    Default: testplatformdrom
+  MyHostedZone:
+    Description: MyHostedZone
+    Type: String
+    Default: .example.com
+  DromBaseTemplateUrl:
+    Description: DromBaseTemplateUrl
+    Type: String
+    Default: https://s3.amazonaws.com/stelligent-training-public/master/
+  KeyPairName:
+    Description: Name of an existing Amazon EC2 key pair to enable SSH access to the instances.
+    Type: AWS::EC2::KeyPair::KeyName
+    MinLength: '1'
+    MaxLength: '255'
+    AllowedPattern: "[\\x20-\\x7E]*"
+    ConstraintDescription: Can contain only ASCII characters.
   RepositoryBranch:
     Description: The name of the branch for the CodeCommit repo
     Type: String
@@ -12,6 +42,70 @@ Parameters:
     AllowedPattern: "[\\x20-\\x7E]*"
     ConstraintDescription: Can contain only ASCII characters.
 Resources:
+  MyHostedZoneParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "MyHostedZoneParameter"
+      Type: "String"
+      Value:
+        Ref: MyHostedZone
+      Description: "MyHostedZone" 
+  DromDdbTableNameParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "DromDdbTableNameParameter"
+      Type: "String"
+      Value:
+        Ref: DromDdbTableName
+      Description: "DromDdbTableName"
+  DromBaseTemplateUrlParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "DromBaseTemplateUrlParameter"
+      Type: "String"
+      Value:
+        Ref: DromBaseTemplateUrl
+      Description: "DromBaseTemplateUrl"
+  CfnStacknamePrefixParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "CfnStacknamePrefixParameter"
+      Type: "String"
+      Value:
+        Ref: CfnStacknamePrefix
+      Description: "CfnStacknamePrefix"
+  KeyPairNameParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "GitHubUserParameter"
+      Type: "String"
+      Value:
+        Ref: KeyPairName
+      Description: "Name of an existing Amazon EC2 key pair to enable SSH access to the instances."
+  GitHubUserParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "GitHubUserParameter"
+      Type: "String"
+      Value:
+        Ref: GitHubUser
+      Description: "GitHubUser id"
+  S3BucketBeanstalkParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "S3BucketBeanstalkParameter"
+      Type: "String"
+      Value:
+        Ref: S3BucketBeanstalk
+      Description: "Unique S3 Bucket Name for Elastic Beanstalk"
+  EmailAddressParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "EmailAddressParameter"
+      Type: "String"
+      Value:
+        Ref: EmailAddress
+      Description: "Email Address for running CloudFormation templates"
   SNSArnParameter:
     Type: "AWS::SSM::Parameter"
     Properties:
