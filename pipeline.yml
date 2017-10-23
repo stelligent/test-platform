@@ -77,7 +77,7 @@ Resources:
   KeyPairNameParameter:
     Type: "AWS::SSM::Parameter"
     Properties:
-      Name: "GitHubUserParameter"
+      Name: "KeyPairNameParameter"
       Type: "String"
       Value:
         Ref: KeyPairName
