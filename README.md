@@ -15,7 +15,7 @@ When this pipeline is created (by following all of the directions below), AWS re
 PREPPING TEST-PLATFORM BEFORE LAUNCH:  
 The following is typically configured one time per AWS account. The following examples assume AWS region `us-east-1`
 
-1. You must make an s3 bucket in your account with the name: 'test-platform-internal-projects'
+1. You must create an s3 bucket in your account with the name: 'test-platform-internal-projects'
 (This is where the results of the projects will be posted.)
 1. Create a *Secure String* parameter named `GitHubToken` in [Parameter Store](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Parameters:) The value should be a github token with ‘repo’ and ‘admin:repo_hook’ permissions.
 1. Modify the [buildspec-cfnstacks.yml](./buildspec-cfnstacks.yml) to obtain the values of the parameters you defined in Parameter Store. Then change the following variables to match your information.
