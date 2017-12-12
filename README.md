@@ -18,12 +18,13 @@ The following is typically configured one time per AWS account. The following ex
 1. You must create an s3 bucket in your account with the name: 'test-platform-internal-projects'
 (This is where the results of the projects will be posted.)
 1. Create a *Secure String* parameter named `GitHubToken` in [Parameter Store](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Parameters:) The value should be a github token with ‘repo’ and ‘admin:repo_hook’ permissions.
-1. Modify the [buildspec-cfnstacks.yml](./buildspec-cfnstacks.yml) to obtain the values of the parameters you defined in Parameter Store. Then change the following variables to match your information.
-
-	  EMAIL_ADDRESS: "YOUR EMAIL ADDRESS"  
-    S3_BUCKET_BEANSTALK: "YOUR BUCKET NAME" # Create an S3 bucket in us-east-1  
-    GITHUB_USER: "YOUR GITHUB USERNAME" # Modify to the name of the user that forked the GitHub repo  
-    EC2_KEY_PAIR_NAME: "YOUR EC2 KEY PAIR NAME" # https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:sort=keyName
+1. Look at the [buildspec-cfnstacks.yml](./buildspec-cfnstacks.yml) to obtain the values of the parameters you should define in Parameter Store. The variables in the Parameter Store should have values that match your information in the Parameter Store.  
+	Example: Key: EmailAddressParameter Value: YOUREMAIL@SOMETHING.COM  
+Do this for the following variables:  
+	EMAIL_ADDRESS:  
+    	S3_BUCKET_BEANSTALK: # Create an S3 bucket in us-east-1  
+	GITHUB_USER: # Modify to the name of the user that forked the GitHub repo  
+	EC2_KEY_PAIR_NAME: # https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:sort=keyName
 
 # Launch Stack
 
