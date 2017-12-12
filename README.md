@@ -12,11 +12,18 @@
 When this pipeline is created (by following all of the directions below), AWS resources will be created once a day due to the automatic Lambda function. Those resources will automatically be deleted right after creation.
 
 # Setup
-
+PREPPING TEST-PLATFORM BEFORE LAUNCH:  
 The following is typically configured one time per AWS account. The following examples assume AWS region `us-east-1`
 
-1. Create a *Secure String* parameter named `GitHubToken` in [Parameter Store](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Parameters:)
-1. Modify the [buildspec-cfnstacks.yml](./buildspec-cfnstacks.yml) to obtain the values of the parameters you defined in Parameter Store
+1. You must make an s3 bucket in your account with the name: 'test-platform-internal-projects'
+(This is where the results of the projects will be posted.)
+1. Create a *Secure String* parameter named `GitHubToken` in [Parameter Store](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Parameters:) The value should be a github token with ‘repo’ and ‘admin:repo_hook’ permissions.
+1. Modify the [buildspec-cfnstacks.yml](./buildspec-cfnstacks.yml) to obtain the values of the parameters you defined in Parameter Store. Then change the following variables to match your information.
+
+	  EMAIL_ADDRESS: "YOUR EMAIL ADDRESS"  
+    S3_BUCKET_BEANSTALK: "YOUR BUCKET NAME" # Create an S3 bucket in us-east-1  
+    GITHUB_USER: "YOUR GITHUB USERNAME" # Modify to the name of the user that forked the GitHub repo  
+    EC2_KEY_PAIR_NAME: "YOUR EC2 KEY PAIR NAME" # https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:sort=keyName
 
 # Launch Stack
 
@@ -24,6 +31,7 @@ The following is typically configured one time per AWS account. The following ex
 
 # Configure Solution
 
+1. Name the stack & provide an email for the sns messaging
 1. Once the CloudFormation stack is successful, select the checkbox next to the stack and click the <strong>Outputs</strong> tab. 
 1. From Outputs, click on the **PipelineUrl** output. The Source action will be in a failed state.
 1. From the CodePipeline Source action, click on the CodeCommit provider and copy the **git clone** statement provided by CodeCommit
@@ -34,13 +42,14 @@ The following is typically configured one time per AWS account. The following ex
 1. From your Terminal, type `git push`
 1. Go back to your pipeline in CodePipeline and see the changes flow through the pipeline
 1. Once the pipeline is complete, go to your CloudFormation stacks to see the CloudFormation stacks being generated
+1. You're finished! Test-Platform will now run once a day and update the list of statuses. To view them, go into the s3 bucket that you created earlier, 'test-platform-internal-projects', and view the site.
 
 # Resources
 
 1. The CloudFormation template is available [here](https://s3.amazonaws.com/www.devopsessentialsaws.com/samples/test-platform/pipeline.yml).
 
 
-# STATUS CHECKER
+# STATUS CHECKER - Running it Manually (Why would you want to do this though?)
 1. Checks the status of cfn stacks, whether they have been created successfully, failed, or are 'in progress'.
 
 You can view the results [here](http://test-platform-internal-projects.s3-website-us-east-1.amazonaws.com/)
