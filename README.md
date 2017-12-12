@@ -21,10 +21,10 @@ The following is typically configured one time per AWS account. The following ex
 1. Look at the [buildspec-cfnstacks.yml](./buildspec-cfnstacks.yml) to obtain the values of the parameters you should define in Parameter Store. The variables in the Parameter Store should have values that match your information in the Parameter Store.  
 	Example: Key: EmailAddressParameter Value: YOUREMAIL@SOMETHING.COM  
 Do this for the following variables:  
-	EMAIL_ADDRESS:  
-    	S3_BUCKET_BEANSTALK: # Create an S3 bucket in us-east-1  
-	GITHUB_USER: # Modify to the name of the user that forked the GitHub repo  
-	EC2_KEY_PAIR_NAME: # https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:sort=keyName
+	EmailAddressParameter:  
+    	S3BucketBeanstalkParameter: # Create an S3 bucket in us-east-1  
+	GitHubUserParameter: # Modify to the name of the user that forked the GitHub repo  
+	KeyPairNameParameter: # https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:sort=keyName
 
 # Launch Stack
 
