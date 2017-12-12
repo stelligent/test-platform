@@ -9,7 +9,7 @@
 1. The cfn stacks (internal projects' cfn stacks) that get automatically created are also automatically deleted.
 
 # !WARNING!
-When this pipeline is created (by following all of the directions below), AWS resources will be created once a day due to the automatic Lambda function. Those resources will automatically be deleted right after creation.
+When this pipeline is created (by following all of the directions below), AWS resources will be created once a day due to the automatic Lambda function. Those resources will automatically be deleted right after creation. If you wish to change the running time (currently once a day), you can do so in the 'sam-template.yml' file. This code: 'ScheduleExpression: "rate(1 day)"' can be changed from '1 day' to whatever time you choose.
 
 # Setup
 PREPPING TEST-PLATFORM BEFORE LAUNCH (one time only):  
