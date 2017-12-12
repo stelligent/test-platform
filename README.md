@@ -12,7 +12,7 @@
 When this pipeline is created (by following all of the directions below), AWS resources will be created once a day due to the automatic Lambda function. Those resources will automatically be deleted right after creation.
 
 # Setup
-PREPPING TEST-PLATFORM BEFORE LAUNCH:  
+PREPPING TEST-PLATFORM BEFORE LAUNCH (one time only):  
 The following is typically configured one time per AWS account. The following examples assume AWS region `us-east-1`
 
 1. You must create an s3 bucket in your account with the name: 'test-platform-internal-projects'
