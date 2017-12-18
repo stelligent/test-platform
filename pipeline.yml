@@ -292,7 +292,7 @@ Resources:
       Name:
         Ref: AWS::StackName
       Description: Build application
-      BadgeEnabled: True
+      BadgeEnabled: 'true'
       ServiceRole:
         Fn::GetAtt:
         - CodeBuildRole
@@ -327,7 +327,7 @@ Resources:
     Properties:
       Name: CodeBuildStatusChecker
       Description: Build application
-      BadgeEnabled: True
+      BadgeEnabled: 'true'
       ServiceRole:
         Fn::GetAtt:
         - CodeBuildRole
@@ -362,7 +362,7 @@ Resources:
     Properties:
       Name: CodeBuildDeleteStacks
       Description: Build application
-      BadgeEnabled: True
+      BadgeEnabled: 'true'
       ServiceRole:
         Fn::GetAtt:
         - CodeBuildRole
@@ -397,7 +397,7 @@ Resources:
     Properties:
       Name: CodeBuildTestCfn
       Description: Build application
-      BadgeEnabled: True
+      BadgeEnabled: 'true'
       ServiceRole:
         Fn::GetAtt:
         - CodeBuildRole
