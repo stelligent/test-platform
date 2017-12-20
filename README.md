@@ -1,3 +1,6 @@
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoibEN0bkxwR21mRTFNczZ0U0Z3WUdnOEx3ZHo2UEZwaGVHZ2t2THRiS0NjVGx0OUFvc3ZOOHljRU42VTlhRnFJZEZlOHNQVzBHUkprU1REOHlieCt0cWVrPSIsIml2UGFyYW1ldGVyU3BlYyI6ImNaYkxudDNKWks5MUx1eFUiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) Lambda
+
+
 # Results
 [STATUS LIST OF INTERNAL PROJECTS](http://test-platform-internal-projects.s3-website-us-east-1.amazonaws.com/)
 
