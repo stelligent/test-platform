@@ -193,6 +193,7 @@ Resources:
             - s3:CreateBucket
             - s3:DeleteBucket
             - events:*
+            - ssm:*
             Effect: Allow
             Resource: "*"
           - Action:
