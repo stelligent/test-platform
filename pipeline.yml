@@ -214,6 +214,7 @@ Resources:
             - logs:CreateLogStream
             - logs:PutLogEvents
             - codepipeline:*
+            - ssm:*
             Effect: Allow
             Resource: "*"
           Version: '2012-10-17'
